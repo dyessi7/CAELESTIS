@@ -1,0 +1,81 @@
+{
+  "galaxy": {
+    "nombre": "Galaxia",
+    "descripcion_corta": "Sistema estelar masivo",
+    "descripcion_larga": "Las galaxias son enormes sistemas formados por estrellas, gas, polvo interestelar y materia oscura, todo unido por la fuerza de la gravedad. Son las estructuras más grandes del universo observable y pueden contener desde millones hasta billones de estrellas. Se clasifican principalmente en espirales, elípticas e irregulares según su forma.",
+    "caracteristicas": [
+      "Contienen entre millones y billones de estrellas",
+      "Pueden tener forma espiral, elíptica o irregular",
+      "Albergan agujeros negros supermasivos en su centro",
+      "Se agrupan en cúmulos y supercúmulos galácticos"
+    ],
+    "ejemplos": [
+      "Vía Láctea",
+      "Andrómeda (M31)",
+      "Galaxia del Sombrero (M104)"
+    ],
+    "dato_curioso": "La luz de la galaxia Andrómeda tarda aproximadamente 2.5 millones de años en llegar a la Tierra.",
+    "registro": "En millones de años luz y en millones de galaxias, la vida se camufla en una inexistencia infinita que se esconde de los telescopios..",
+    "fuente": "https://science.nasa.gov/universe/galaxies/"
+  },
+
+  "nebula": {
+    "nombre": "Nebulosa",
+    "descripcion_corta": "Nube interestelar de gas y polvo",
+    "descripcion_larga": "Las nebulosas son enormes nubes de gas y polvo en el espacio interestelar. Algunas se forman a partir de los restos de estrellas muertas, mientras que otras son regiones donde nacen nuevas estrellas. Están compuestas principalmente por hidrógeno y helio.",
+    "caracteristicas": [
+      "Pueden ser regiones de nacimiento estelar",
+      "Están compuestas de gas y polvo cósmico",
+      "Existen nebulosas de emisión, reflexión y oscuras",
+      "Muchas se originan tras explosiones de supernovas"
+    ],
+    "ejemplos": [
+      "Nebulosa de Orión (M42)",
+      "Nebulosa del Cangrejo",
+      "Nebulosa Cabeza de Caballo"
+    ],
+    "dato_curioso": "La Nebulosa del Cangrejo es el remanente de una supernova observada desde la Tierra en el año 1054.",
+    "registro": "La mirada que observa, en mil formas, retratada y dibujada semejantemente a la vista de Dios, una presencia oculta, una visión u espectro del futuro y pasado colisiando mutuamente en una coma y punto que se pierden sin forma.",
+    "fuente": "https://science.nasa.gov/mission/hubble/science/universe-uncovered/hubble-nebulae/"
+  },
+
+  "comet": {
+    "nombre": "Cometa",
+    "descripcion_corta": "Cuerpo helado que orbita una estrella",
+    "descripcion_larga": "Los cometas son objetos compuestos principalmente de hielo, roca y polvo que orbitan alrededor de una estrella. Cuando se acercan al Sol, el calor provoca que liberen gases y partículas, formando una brillante cola visible desde grandes distancias.",
+    "caracteristicas": [
+      "Poseen un núcleo de hielo y roca",
+      "Desarrollan cola al acercarse al Sol",
+      "Orbitan en trayectorias muy elípticas",
+      "Provienen principalmente del Cinturón de Kuiper y la Nube de Oort"
+    ],
+    "ejemplos": [
+      "Cometa Halley",
+      "Cometa Hale-Bopp",
+      "Cometa NEOWISE"
+    ],
+    "dato_curioso": "El cometa Halley puede verse desde la Tierra aproximadamente cada 76 años.",
+    "registro": "La luz que parte en un instante. Que aparece y desaparece silenciosamente. No es un segundo, es una acción de tiempo equivalente a los años luz que estas de ahí..",
+    "fuente": "https://science.nasa.gov/solar-system/comets/"
+  },
+
+  "globular_cluster": {
+    "nombre": "Cúmulo Globular",
+    "descripcion_corta": "Agrupación esférica de estrellas antiguas",
+    "descripcion_larga": "Los cúmulos globulares son agrupaciones extremadamente densas y esféricas de estrellas unidas gravitacionalmente. Contienen algunas de las estrellas más antiguas del universo y suelen encontrarse orbitando el halo de las galaxias.",
+    "caracteristicas": [
+      "Contienen cientos de miles de estrellas",
+      "Tienen forma aproximadamente esférica",
+      "Sus estrellas son muy antiguas",
+      "Orbitan alrededor del centro galáctico"
+    ],
+    "ejemplos": [
+      "Omega Centauri",
+      "M13 (Cúmulo de Hércules)",
+      "47 Tucanae"
+    ],
+    "dato_curioso": "Algunos cúmulos globulares tienen más de 12 mil millones de años de antigüedad.",
+    "registro": "Sin calculo mal planteado. El espacio en el universo que coincide una y otra vez en el mismo punto de encuentro.",
+    "fuente": "https://science.nasa.gov/universe/star-clusters-inside-the-universes-stellar-collections/"
+  }
+}
