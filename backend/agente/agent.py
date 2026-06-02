@@ -393,7 +393,7 @@ class CaelestisAgent:
         # cuántas fueron. Transparencia del agente.
         if descartadas > 0:
             lineas.append(
-                f"\n\nNota: se descartaron {descartadas} detección(es) "
+                f"Nota: se descartaron {descartadas} detección(es) "
                 f"por debajo del umbral mínimo de confianza."
             )
 
