@@ -161,3 +161,62 @@ h1, h2, h3, h4, h5, h6 {
 .text-accent {
   color: var(--accent);
 }
+
+/* === Paleta y estilos de Caelestis === */
+
+:root {
+  --color-bg: #050507;
+  --color-bg-soft: #0a0a0f;
+  --color-fg: #f0ede4;
+  --color-fg-muted: #8a8678;
+  --color-fg-subtle: #5c594f;
+  --color-accent: #c9a14a;
+  --color-accent-soft: #d4b870;
+  --color-border: #1f1d1a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+/* Animación sutil de aparición */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 1.2s ease-out forwards;
+}
+
+/* Estrella titilando */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.star {
+  animation: twinkle 3s ease-in-out infinite;
+}

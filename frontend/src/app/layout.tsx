@@ -10,13 +10,14 @@ const geistSans = Geist({
 const cormorant = Cormorant_Garamond({
   variable: "--font-serif",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
   title: "Caelestis · Detección automatizada del cosmos",
   description:
-    "Sistema inteligente para la detección y análisis automatizado de objetos celestes mediante visión por computadora.",
+    "Sistema inteligente para la detección y análisis de objetos celestes mediante visión por computadora.",
 };
 
 export default function RootLayout({
