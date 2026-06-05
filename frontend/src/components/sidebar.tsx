@@ -15,7 +15,7 @@ export default function Sidebar() {
   const [activeSection, setActiveSection] = useState("inicio");
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    const observer = new IntersectionObserver( //mi vigilador de navegador muaja
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -42,7 +42,7 @@ export default function Sidebar() {
       <ul className="flex flex-col gap-6">
         {sections.map(({ id, label }) => (
           <li key={id}>
-            
+
               <a href={`#${id}`}
               className="group flex items-center gap-3 text-xs uppercase tracking-widest transition-colors duration-300"
             >
