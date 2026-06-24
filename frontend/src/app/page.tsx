@@ -1,5 +1,5 @@
-import Sidebar from "@/components/sidebar";
-import Constellation from "@/components/constellation";
+import Sidebar from "@/components/Sidebar";
+import Constellation from "@/components/Constellation";
 import Link from "next/link";
 
 export default function Home() {

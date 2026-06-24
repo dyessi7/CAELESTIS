@@ -23,7 +23,7 @@ const EJEMPLOS = [
     descripcion: "A 300 millones de años luz en la constelación Volans. Su anillo de estrellas jóvenes nació de una colisión galáctica.",
   },
   {
-    archivo: "galaxy-messier-51.jpg",
+    archivo: "galaxy-messier-51.png",
     titulo: "Messier 51",
     subtitulo: "Galaxia del Remolino",
     fuente: "Hubble Space Telescope",
