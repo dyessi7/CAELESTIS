@@ -164,12 +164,6 @@ La interfaz web queda accesible en `http://localhost:3000`.
 | `POST` | `/describir` | Devuelve la descripción detallada de una clase específica |
 | `POST` | `/reporte` | Genera un reporte agregado a partir de múltiples detecciones |
 
-## Autora
-
-**Yessica Pamela Gómez Salinas**  
-Escuela Profesional de Ingeniería de Sistemas e Inteligencia Artificial  
-Universidad Privada Antenor Orrego · Trujillo, Perú · 2026
-
 ## Curso y contexto académico
 
 Proyecto final del curso de Inteligencia Artificial.  
