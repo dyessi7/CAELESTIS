@@ -95,20 +95,3 @@ class CaelestisDetector:
             })
 
         return detecciones
-
-
-if __name__ == "__main__":
-    # Prueba 1: verificar que el modelo se carga correctamente.
-    detector = CaelestisDetector()
-
-    # Prueba 2: detectar sobre una imagen de ejemplo si existe.
-    # Cambiar la ruta a una imagen real disponible localmente.
-    ruta_imagen_prueba = "C:/PROYECTOS/IA\CAELESTIS/backend/modelo/1.webp"
-
-    if Path(ruta_imagen_prueba).exists():
-        detecciones = detector.detectar(ruta_imagen_prueba)
-        print(f"\nSe encontraron {len(detecciones)} detección(es):")
-        for det in detecciones:
-            print(f"  - {det}")
-    else:
-        print(f"\nOmitiendo prueba de inferencia: no se encontró {ruta_imagen_prueba}")
