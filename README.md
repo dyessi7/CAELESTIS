@@ -100,4 +100,92 @@ CAELESTIS/
 ├── backend/
 │   ├── agente/
 │   │   ├── agent.py           # Clase CaelestisAgent
-│   │   └── agentBD.json        # Base de
+│   │   └── agentBD.json        # Base de conocimiento astronómica
+│   ├── modelo/
+│   │   └── best.pt             # Modelo YOLOv8n entrenado
+│   ├── detector.py             # Envoltorio de YOLOv8
+│   ├── main.py                 # Servidor FastAPI y endpoints
+│   └── requirements.txt        # Dependencias Python
+│
+├── frontend/
+│   ├── public/
+│   │   └── ejemplos/           # Imágenes astronómicas de ejemplo
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── page.tsx        # Landing principal
+│   │   │   └── detector/       # Página del detector
+│   │   ├── components/         # Componentes reutilizables
+│   │   └── lib/
+│   │       └── api.ts          # Cliente HTTP del backend
+│   └── package.json
+│
+└── README.md
+```
+
+## Ejecución local
+
+### Requisitos previos
+- Python 3.11
+- Node.js 20+
+- Git
+
+### Backend
+
+```bash
+cd backend
+python -m venv venv
+.\venv\Scripts\Activate.ps1        # Windows
+source venv/bin/activate           # Linux/Mac
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
+
+El backend queda accesible en `http://localhost:8000`. La documentación interactiva se sirve en `http://localhost:8000/docs`.
+
+### Frontend
+
+En una nueva terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+La interfaz web queda accesible en `http://localhost:3000`.
+
+## Endpoints de la API
+
+| Método | Ruta | Descripción |
+|--------|------|-------------|
+| `GET` | `/salud` | Verifica el estado del servicio |
+| `GET` | `/metricas` | Devuelve las métricas globales y por clase del modelo |
+| `POST` | `/detectar` | Recibe una imagen y devuelve las detecciones con metadatos del agente |
+| `POST` | `/describir` | Devuelve la descripción detallada de una clase específica |
+| `POST` | `/reporte` | Genera un reporte agregado a partir de múltiples detecciones |
+
+## Autora
+
+**Yessica Pamela Gómez Salinas**  
+Escuela Profesional de Ingeniería de Sistemas e Inteligencia Artificial  
+Universidad Privada Antenor Orrego · Trujillo, Perú · 2026
+
+## Curso y contexto académico
+
+Proyecto final del curso de Inteligencia Artificial.  
+Docente: Teobaldo Hernán Sagástegui Chigne.
+
+## Fuentes y créditos
+
+- **Dataset:** [COSMICA](https://universe.roboflow.com/) (Piratinskii & Rabaev, 2025)
+- **Modelo base:** [Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics)
+- **Imágenes de ejemplo:** [NASA Image Gallery](https://images.nasa.gov/) · Hubble Space Telescope · James Webb Space Telescope
+- **Base de conocimiento astronómica:** información curada desde recursos oficiales de la NASA
+
+## Antecedentes
+
+El sistema se apoya en trabajos previos que validan el uso de arquitecturas YOLO en detección astronómica:
+
+- González et al. (2018) — *AstroCV*: detección automática de galaxias con YOLO y CNN.
+- D'Addona et al. (2024) — *DeepSpaceYoloDataset*: imágenes astronómicas anotadas para YOLO.
+- Ramos & Rivas-Echeverría (2025) — Análisis comparativo de YOLOv8, v9 y v10 en objetos del cielo profundo.
