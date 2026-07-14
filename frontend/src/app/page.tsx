@@ -1,6 +1,13 @@
+"use client";
+
 import Sidebar from "@/components/Sidebar";
 import Constellation from "@/components/Constellation";
+import CosmicSwirl from "@/components/CosmicSwirl";
+import Starfield from "@/components/Starfield";
+import MetricsWheel from "@/components/MetricsWheel";
+import Footer from "@/components/Footer";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -13,20 +20,30 @@ export default function Home() {
         className="min-h-screen flex items-center justify-center relative overflow-hidden px-6"
       >
         <div className="absolute inset-0 bg-gradient-radial from-[#0a0a15] via-[#050507] to-[#050507] opacity-80" />
+        {/* Halos de color: violeta arriba-izquierda, azul abajo-derecha,
+            dan profundidad de nebulosa sin competir con el texto. */}
+        <div className="absolute -top-40 -left-40 w-[520px] h-[520px] rounded-full bg-[var(--color-purple)] opacity-[0.08] blur-[120px]" />
+        <div className="absolute -bottom-40 -right-20 w-[480px] h-[480px] rounded-full bg-[var(--color-blue)] opacity-[0.08] blur-[120px]" />
+
+        <Starfield count={70} seed={11} />
+
+        {/* Remolino de anillos girando lentamente detrás del título,
+            eco del cielo en espiral de la referencia. */}
+        <CosmicSwirl className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[760px] h-[760px] opacity-70" />
 
         <Constellation
           variant="medium"
-          className="absolute top-20 left-16 text-[var(--color-accent)] opacity-40"
+          className="absolute top-20 left-16 text-[var(--color-purple-soft)] opacity-40"
         />
         <Constellation
-          className="absolute bottom-32 right-32 text-[var(--color-accent)] opacity-30"
+          className="absolute bottom-32 right-32 text-[var(--color-blue-soft)] opacity-30"
         />
 
         <div className="relative z-10 text-center max-w-3xl fade-in-up">
-          <p className="text-xs uppercase tracking-[0.4em] text-[var(--color-accent)] mb-8">
+          <p className="text-eyebrow text-[var(--color-accent)] mb-8">
             Sistema inteligente · Visión por computadora
           </p>
-          <h1 className="text-7xl md:text-8xl font-serif italic mb-12">
+          <h1 className="text-7xl md:text-9xl font-serif italic mb-12 heading-glow text-gradient-cosmic">
             Caelestis
           </h1>
           <p className="font-serif italic text-lg md:text-xl text-[var(--color-fg-muted)] leading-relaxed max-w-2xl mx-auto">
@@ -35,7 +52,7 @@ export default function Home() {
           </p>
           <div className="mt-16 flex items-center justify-center gap-4">
             <span className="h-px w-12 bg-[var(--color-accent)] opacity-50" />
-            <span className="text-xs uppercase tracking-widest text-[var(--color-fg-muted)]">
+            <span className="text-eyebrow text-[var(--color-fg-muted)]">
               Desplaza para descubrir
             </span>
             <span className="h-px w-12 bg-[var(--color-accent)] opacity-50" />
@@ -46,57 +63,105 @@ export default function Home() {
       {/* === SECCIÓN 2: QUÉ ES === */}
       <section
         id="que-es"
-        className="min-h-screen flex items-center px-6 py-24 relative"
+        className="min-h-screen flex items-center px-6 py-24 relative overflow-hidden"
       >
-        <div className="max-w-4xl mx-auto">
-          <p className="text-xs uppercase tracking-[0.3em] text-[var(--color-accent)] mb-6">
-            ¿Qué es?
-          </p>
-          <h2 className="text-5xl md:text-6xl font-serif mb-12">
-            Una mirada inteligente al cosmos.
-          </h2>
-          <div className="space-y-6 text-lg leading-relaxed text-[var(--color-fg-muted)] max-w-2xl">
-            <p>
-              Caelestis es un sistema de inteligencia artificial que detecta,
-              clasifica y describe objetos celestes en imágenes astronómicas.
-            </p>
-            <p>
-              Combina un modelo de visión por computadora entrenado sobre
-              imágenes reales del cosmos con un agente inteligente que interpreta
-              los resultados y genera descripciones verificadas contra fuentes
-              oficiales de NASA.
-            </p>
-            <p>
-              Está pensado para estudiantes, aficionados y curiosos del universo
-              que no necesitan ser astrónomos para descubrir lo que contiene una
-              imagen del cielo.
-            </p>
+        <Starfield count={25} seed={22} />
+        <Constellation
+          className="absolute top-16 right-24 text-[var(--color-accent)] opacity-20"
+        />
+
+        <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          {/* Columna de texto */}
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+              <span className="h-px w-8 bg-[var(--color-accent)] opacity-60" />
+              <p className="text-eyebrow text-[var(--color-accent)]">
+                ¿Qué es? &nbsp;·&nbsp; 01 — 03
+              </p>
+            </div>
+            <h2 className="text-6xl md:text-7xl font-serif mb-10">
+              Una mirada inteligente <br />
+              <span className="italic text-gradient-cosmic">al cosmos.</span>
+            </h2>
+            <div className="space-y-5 text-body-cosmic text-[var(--color-fg-muted)] mb-14">
+              <p>
+                Caelestis es un sistema de inteligencia artificial que detecta,
+                clasifica y describe objetos celestes en imágenes astronómicas.
+              </p>
+              <p>
+                Combina un modelo de visión por computadora entrenado sobre
+                imágenes reales del cosmos con un agente inteligente que
+                interpreta los resultados y genera descripciones verificadas
+                contra fuentes oficiales de NASA.
+              </p>
+            </div>
+
+            <div className="rule-cosmic mb-10" />
+
+            <div className="grid grid-cols-3 gap-6">
+              {[
+                {
+                  n: "01",
+                  title: "Detección visual",
+                  desc: "YOLOv8 sobre el dataset COSMICA con cuatro clases astronómicas.",
+                },
+                {
+                  n: "02",
+                  title: "Agente inteligente",
+                  desc: "Interpreta cada detección y selecciona la respuesta adecuada.",
+                },
+                {
+                  n: "03",
+                  title: "Información verificada",
+                  desc: "Curada manualmente contra fuentes oficiales de la NASA.",
+                },
+              ].map((item) => (
+                <div key={item.n}>
+                  <div className="text-[var(--color-accent)] text-2xl font-serif mb-3">
+                    {item.n}
+                  </div>
+                  <h3 className="text-eyebrow mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs font-light text-[var(--color-fg-muted)] leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div>
-              <div className="text-[var(--color-accent)] text-3xl font-serif mb-3">01</div>
-              <h3 className="text-xl mb-2">Detección visual</h3>
-              <p className="text-sm text-[var(--color-fg-muted)] leading-relaxed">
-                YOLOv8 entrenado sobre el dataset COSMICA con cuatro clases
-                astronómicas.
-              </p>
-            </div>
-            <div>
-              <div className="text-[var(--color-accent)] text-3xl font-serif mb-3">02</div>
-              <h3 className="text-xl mb-2">Agente inteligente</h3>
-              <p className="text-sm text-[var(--color-fg-muted)] leading-relaxed">
-                Sistema reactivo que interpreta cada detección y selecciona la
-                respuesta adecuada.
-              </p>
-            </div>
-            <div>
-              <div className="text-[var(--color-accent)] text-3xl font-serif mb-3">03</div>
-              <h3 className="text-xl mb-2">Información verificada</h3>
-              <p className="text-sm text-[var(--color-fg-muted)] leading-relaxed">
-                Base de conocimiento curada manualmente contra fuentes oficiales
-                de la NASA.
-              </p>
+          {/* Imagen protagonista */}
+          <div className="relative flex items-center justify-center">
+            <div className="absolute w-[120%] h-[120%] rounded-full bg-[var(--color-accent)] opacity-[0.10] blur-[110px]" />
+            <div className="absolute w-[90%] h-[90%] rounded-full bg-[var(--color-purple)] opacity-[0.12] blur-[100px] translate-x-8 -translate-y-4" />
+            <div className="absolute w-[70%] h-[70%] rounded-full bg-[var(--color-blue)] opacity-[0.10] blur-[90px] -translate-x-10 translate-y-10" />
+            <div className="relative w-full max-w-[560px] drop-shadow-[0_40px_80px_rgba(0,0,0,0.6)]">
+              <Image
+                src="/images/mars-cutout.png"
+                alt="Marte"
+                width={964}
+                height={928}
+                className="w-full h-auto"
+                priority
+              />
+              {/* Sombra de terminador: oscurece el borde inferior-derecho del
+                  planeta para que se funda con el fondo, como en la referencia.
+                  El recorte (mars-cutout.png) trae ~5-8% de margen transparente
+                  alrededor de la esfera, así que el óvalo se insetea esos
+                  mismos porcentajes para calzar con el planeta real y no
+                  dejar un borde visible fuera de su silueta. */}
+              <div
+                className="absolute rounded-full pointer-events-none"
+                style={{
+                  top: "4.6%",
+                  bottom: "5.2%",
+                  left: "6.1%",
+                  right: "7.7%",
+                  background:
+                    "radial-gradient(circle at 28% 24%, transparent 0%, transparent 20%, rgba(5,5,7,0.45) 38%, rgba(5,5,7,0.92) 58%, rgba(5,5,7,0.98) 100%)",
+                }}
+              />
             </div>
           </div>
         </div>
@@ -105,37 +170,107 @@ export default function Home() {
       {/* === SECCIÓN 3: PROBLEMA === */}
       <section
         id="problema"
-        className="min-h-screen flex items-center px-6 py-24 relative bg-[var(--color-bg-soft)]"
+        className="min-h-screen flex items-center px-6 py-24 relative overflow-hidden bg-[var(--color-bg-soft)]"
       >
-        <Constellation
-          variant="medium"
-          className="absolute top-20 right-20 text-[var(--color-accent)] opacity-20"
-        />
+        <Starfield count={30} seed={33} />
 
-        <div className="max-w-4xl mx-auto">
-          <p className="text-xs uppercase tracking-[0.3em] text-[var(--color-accent)] mb-6">
-            El problema
+        {/* El agujero negro, presente pero apenas perceptible: blend "screen"
+            para que solo su brillo se asome sobre el fondo oscuro (el negro
+            de la foto no aporta nada) y una capa de blur para que se sienta
+            más que se vea, "como si estuviera entrando". */}
+        <div className="absolute inset-0 opacity-45 mix-blend-screen">
+          <Image
+            src="/images/cc-2.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-[8%_center]"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-soft)] via-transparent to-[var(--color-bg-soft)]/50" />
+
+        {/* Marca de esquina superior izquierda */}
+        <div className="absolute top-8 left-8 flex items-center gap-3 text-[var(--color-fg-subtle)] z-10">
+          <span className="text-[10px] tracking-[0.3em]">●</span>
+          <span className="h-px w-6 bg-[var(--color-fg-subtle)] opacity-60" />
+          <span className="text-[10px] tracking-[0.3em]">02 — 03</span>
+        </div>
+
+        {/* Etiqueta de esquina superior derecha */}
+        <div className="absolute top-8 right-8 text-right z-10">
+          <p className="text-[10px] uppercase tracking-[0.3em] text-[var(--color-fg-muted)] leading-relaxed">
+            Caelestis
+            <br />
+            Una historia
+            <br />
+            — del cosmos
           </p>
-          <h2 className="text-5xl md:text-6xl font-serif mb-12 italic">
-            Si el universo es tan inmenso, <br />
-            ¿por qué no lo hemos visto?
-          </h2>
-          <div className="space-y-6 text-lg leading-relaxed text-[var(--color-fg-muted)] max-w-2xl">
-            <p>
-              Es la Paradoja de Fermi. Y una de las respuestas más aceptadas no
-              es romántica: no es que el cosmos esté vacío, es que no lo hemos
-              mirado lo suficiente.
-            </p>
-            <p>
-              Los telescopios modernos generan más datos de los que la humanidad
-              puede analizar. El proyecto Galaxy Zoo reunió a más de cuatrocientos
-              mil voluntarios para clasificar galaxias manualmente. En diecisiete
-              años, lograron clasificar apenas el seis por ciento.
-            </p>
-            <p>
-              El problema no son los datos. Son las herramientas para mirarlos.
-            </p>
+        </div>
+
+        <div className="max-w-4xl mx-auto w-full relative z-10">
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1"
+                  className="text-[var(--color-accent)] opacity-80"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="9" />
+                  <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none" />
+                </svg>
+                <p className="text-eyebrow text-[var(--color-accent)]">
+                  El problema &nbsp;·&nbsp; 02 — 03
+                </p>
+              </div>
+
+              <h2 className="text-5xl md:text-6xl font-serif uppercase leading-[1.08] mb-10 max-w-md">
+                Si el universo
+                <br />
+                es tan inmenso
+              </h2>
+
+              {/* El texto se desplaza más a la derecha que el título,
+                  como en la referencia: composición escalonada. */}
+              <div className="md:ml-16 lg:ml-24 max-w-md">
+                <p className="font-serif italic text-lg md:text-xl text-[var(--color-fg-muted)] leading-relaxed mb-8">
+                  Es la Paradoja de Fermi. Y una de las respuestas más
+                  aceptadas no es romántica: no es que el cosmos esté vacío,
+                  es que no lo hemos mirado lo suficiente. El problema no son
+                  los datos. Son las herramientas para mirarlos.
+                </p>
+
+                <p className="text-xs text-[var(--color-fg-subtle)] leading-relaxed max-w-sm">
+                  Los telescopios modernos generan más datos de los que la
+                  humanidad puede analizar. El proyecto Galaxy Zoo reunió a
+                  más de cuatrocientos mil voluntarios para clasificar
+                  galaxias manualmente. En diecisiete años, lograron
+                  clasificar apenas el seis por ciento.
+                </p>
+              </div>
+            </div>
           </div>
+        {/* Firma de esquina inferior izquierda */}
+        <div className="absolute bottom-8 left-8 text-xs uppercase tracking-[0.3em] text-[var(--color-fg-subtle)] z-10 font-serif italic">
+          Caelestis
+        </div>
+
+        {/* Botón flotante de esquina inferior derecha */}
+        <div className="absolute bottom-8 right-8 flex gap-3 z-10">
+          <a
+            href="#resultados"
+            className="w-10 h-10 rounded-full bg-white/5 border border-[var(--color-border)] flex items-center justify-center text-[var(--color-fg-muted)] hover:text-[var(--color-accent)] hover:border-[var(--color-accent)] transition-colors duration-300"
+            aria-label="Ir a la siguiente sección"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <circle cx="11" cy="11" r="7" />
+              <path d="M21 21l-4.3-4.3" strokeLinecap="round" />
+            </svg>
+          </a>
         </div>
       </section>
 
@@ -144,75 +279,55 @@ export default function Home() {
         id="resultados"
         className="min-h-screen flex items-center px-6 py-24 relative"
       >
+        <Starfield count={20} seed={44} />
+        <Constellation
+          className="absolute bottom-24 right-16 text-[var(--color-blue)] opacity-20"
+        />
+
         <div className="max-w-4xl mx-auto w-full">
-          <p className="text-xs uppercase tracking-[0.3em] text-[var(--color-accent)] mb-6">
-            Resultados
-          </p>
-          <h2 className="text-5xl md:text-6xl font-serif mb-16">
-            Métricas del modelo.
-          </h2>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-            <div>
-              <div className="text-4xl font-serif text-[var(--color-accent)] mb-2">
-                74.6%
-              </div>
-              <p className="text-xs uppercase tracking-widest text-[var(--color-fg-muted)]">
-                mAP50
-              </p>
-            </div>
-            <div>
-              <div className="text-4xl font-serif text-[var(--color-accent)] mb-2">
-                79.7%
-              </div>
-              <p className="text-xs uppercase tracking-widest text-[var(--color-fg-muted)]">
-                Precisión
-              </p>
-            </div>
-            <div>
-              <div className="text-4xl font-serif text-[var(--color-accent)] mb-2">
-                67.8%
-              </div>
-              <p className="text-xs uppercase tracking-widest text-[var(--color-fg-muted)]">
-                Recall
-              </p>
-            </div>
-            <div>
-              <div className="text-4xl font-serif text-[var(--color-accent)] mb-2">
-                43.8%
-              </div>
-              <p className="text-xs uppercase tracking-widest text-[var(--color-fg-muted)]">
-                mAP50-95
-              </p>
-            </div>
-          </div>
-
-          <div className="border-t border-[var(--color-border)] pt-8">
-            <p className="text-xs uppercase tracking-[0.3em] text-[var(--color-fg-muted)] mb-6">
-              Desempeño por clase (mAP50)
+          <div className="flex items-center gap-3 mb-6">
+            <span className="h-px w-8 bg-[var(--color-accent)] opacity-60" />
+            <p className="text-eyebrow text-[var(--color-accent)]">
+              Resultados
             </p>
-            <div className="space-y-4">
-              {[
-                { name: "Cúmulo globular", value: 93.1 },
-                { name: "Nebulosa", value: 79.1 },
-                { name: "Cometa", value: 69.8 },
-                { name: "Galaxia", value: 56.4 },
-              ].map((item) => (
-                <div key={item.name}>
-                  <div className="flex justify-between mb-2 text-sm">
-                    <span className="font-serif italic">{item.name}</span>
-                    <span className="text-[var(--color-accent)]">
-                      {item.value}%
-                    </span>
+          </div>
+          <h2 className="text-6xl md:text-7xl font-serif mb-6">
+            Métricas del <span className="italic text-gradient-cosmic">modelo.</span>
+          </h2>
+          <p className="text-xs text-[var(--color-fg-subtle)] mb-16">
+            Pasa el cursor sobre cada órbita para ver su valor.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <MetricsWheel />
+
+            <div>
+              <p className="text-eyebrow text-[var(--color-fg-muted)] mb-6">
+                Desempeño por clase (mAP50)
+              </p>
+              <div className="space-y-4">
+                {[
+                  { name: "Cúmulo globular", value: 93.1 },
+                  { name: "Nebulosa", value: 79.1 },
+                  { name: "Cometa", value: 69.8 },
+                  { name: "Galaxia", value: 56.4 },
+                ].map((item) => (
+                  <div key={item.name}>
+                    <div className="flex justify-between mb-2 text-sm">
+                      <span className="font-serif italic">{item.name}</span>
+                      <span className="text-[var(--color-accent)]">
+                        {item.value}%
+                      </span>
+                    </div>
+                    <div className="h-px bg-[var(--color-border)] relative">
+                      <div
+                        className="absolute top-0 left-0 h-px bg-[var(--color-accent)]"
+                        style={{ width: `${item.value}%` }}
+                      />
+                    </div>
                   </div>
-                  <div className="h-px bg-[var(--color-border)] relative">
-                    <div
-                      className="absolute top-0 left-0 h-px bg-[var(--color-accent)]"
-                      style={{ width: `${item.value}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -223,16 +338,21 @@ export default function Home() {
         id="antecedentes"
         className="min-h-screen flex items-center px-6 py-24 relative bg-[var(--color-bg-soft)]"
       >
+        <Starfield count={30} seed={55} />
         <Constellation
-          className="absolute top-32 left-20 text-[var(--color-accent)] opacity-25"
+          className="absolute top-32 left-20 text-[var(--color-blue)] opacity-25"
         />
 
         <div className="max-w-4xl mx-auto">
-          <p className="text-xs uppercase tracking-[0.3em] text-[var(--color-accent)] mb-6">
-            Antecedentes
-          </p>
-          <h2 className="text-5xl md:text-6xl font-serif mb-12">
-            Sobre los hombros <br /> de quienes miraron antes.
+          <div className="flex items-center gap-3 mb-6">
+            <span className="h-px w-8 bg-[var(--color-accent)] opacity-60" />
+            <p className="text-eyebrow text-[var(--color-accent)]">
+              Antecedentes
+            </p>
+          </div>
+          <h2 className="text-6xl md:text-7xl font-serif mb-12">
+            Sobre los hombros <br /> de quienes{" "}
+            <span className="italic text-gradient-cosmic">miraron antes.</span>
           </h2>
           <div className="space-y-8 max-w-2xl">
             {[
@@ -258,7 +378,7 @@ export default function Home() {
                 className="border-l border-[var(--color-border)] pl-6"
               >
                 <h3 className="text-lg font-serif italic mb-2">{item.title}</h3>
-                <p className="text-sm text-[var(--color-fg-muted)] leading-relaxed">
+                <p className="text-sm font-light text-[var(--color-fg-muted)] leading-relaxed">
                   {item.desc}
                 </p>
               </div>
@@ -272,22 +392,27 @@ export default function Home() {
         id="probar"
         className="min-h-screen flex items-center justify-center px-6 py-24 relative"
       >
+        <Starfield count={50} seed={66} />
+        <CosmicSwirl className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] h-[640px] opacity-40" />
         <Constellation
           variant="medium"
-          className="absolute top-32 left-1/4 text-[var(--color-accent)] opacity-30"
+          className="absolute top-32 left-1/4 text-[var(--color-purple-soft)] opacity-30"
         />
         <Constellation
-          className="absolute bottom-40 right-1/4 text-[var(--color-accent)] opacity-25"
+          className="absolute bottom-40 right-1/4 text-[var(--color-blue-soft)] opacity-25"
         />
 
         <div className="text-center max-w-2xl">
-          <p className="text-xs uppercase tracking-[0.4em] text-[var(--color-accent)] mb-8">
+          <p className="text-eyebrow text-[var(--color-accent)] mb-8">
             Probar el sistema
           </p>
-          <h2 className="text-5xl md:text-6xl font-serif mb-8 italic">
-            Una imagen. <br /> Mil historias del cosmos.
+          <h2 className="text-6xl md:text-7xl font-serif mb-8">
+            Una imagen. <br />
+            <span className="italic text-gradient-cosmic">
+              Mil historias del cosmos.
+            </span>
           </h2>
-          <p className="text-lg text-[var(--color-fg-muted)] mb-16 leading-relaxed">
+          <p className="text-body-cosmic text-[var(--color-fg-muted)] mb-16">
             Sube una imagen astronómica y descubre lo que el modelo y el agente
             inteligente tienen para decir sobre ella.
           </p>
@@ -299,15 +424,10 @@ export default function Home() {
             Probar Caelestis
             <span>→</span>
           </Link>
-
-          <div className="mt-32 pt-12 border-t border-[var(--color-border)] text-xs uppercase tracking-widest text-[var(--color-fg-subtle)] space-y-3">
-            <p>Yessica Gómez Salinas · UPAO · 2026</p>
-            <p>
-              Fuentes: NASA · COSMICA · Roboflow · Ultralytics
-            </p>
-          </div>
         </div>
       </section>
+
+      <Footer />
     </main>
   );
 }
