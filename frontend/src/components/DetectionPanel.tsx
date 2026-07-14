@@ -158,20 +158,21 @@ export default function DetectionPanel({ deteccion, onCerrar }: Props) {
             </div>
           )}
 
-          {descripcion.datos_curiosos && descripcion.datos_curiosos.length > 0 && (
+          {descripcion.dato_curioso && (
             <div>
               <p className="text-xs uppercase tracking-[0.3em] text-[var(--color-accent)] mb-3">
-                Datos curiosos
+                Dato curioso
               </p>
-              <ul className="space-y-2">
-                {descripcion.datos_curiosos.map((d, i) => (
-                  <li key={i} className="text-sm text-[var(--color-fg-muted)] flex gap-2">
-                    <span className="text-[var(--color-accent)]">·</span>
-                    <span>{d}</span>
-                  </li>
-                ))}
-              </ul>
+              <p className="text-sm text-[var(--color-fg-muted)] leading-relaxed">
+                {descripcion.dato_curioso}
+              </p>
             </div>
+          )}
+
+          {descripcion.registro && (
+            <p className="font-serif italic text-sm text-[var(--color-fg-muted)] leading-relaxed border-l-2 border-[var(--color-border)] pl-4">
+              &ldquo;{descripcion.registro}&rdquo;
+            </p>
           )}
 
           {descripcion.fuente && (

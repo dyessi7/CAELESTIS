@@ -5,7 +5,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 // Estos describen la estructura exacta de los datos que vienen del backend.
 // TypeScript nos ayudará a no equivocarnos al usarlos.
 
-export type NivelCertezа = "alta" | "media" | "baja" | "neutra";
+export type NivelCerteza = "alta" | "media" | "baja" | "neutra";
 
 export type Deteccion = {
   clase: string;
@@ -13,7 +13,7 @@ export type Deteccion = {
   descripcion_corta: string;
   confianza: number;
   confianza_pct: string;
-  nivel_certeza: NivelCertezа;
+  nivel_certeza: NivelCerteza;
   bbox: [number, number, number, number]; // [x1, y1, x2, y2]
 };
 
@@ -29,9 +29,10 @@ export type DescripcionObjeto = {
   descripcion_larga: string;
   caracteristicas: string[];
   ejemplos: string[];
-  datos_curiosos: string[];
+  dato_curioso: string;
+  registro: string;
   fuente: string;
-  nivel_certeza: NivelCertezа;
+  nivel_certeza: NivelCerteza;
   advertencia?: string;
 };
 
