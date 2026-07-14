@@ -153,6 +153,24 @@
   --color-accent: #c9a14a;
   --color-accent-soft: #d4b870;
   --color-border: #1f1d1a;
+
+  /* Acentos fríos: nebulosa (violeta) y espacio profundo (azul) */
+  --color-purple: #9d7fe0;
+  --color-purple-soft: #bcaaee;
+  --color-purple-dim: #4a3d78;
+  --color-blue: #5f8fd9;
+  --color-blue-soft: #8bb0e8;
+  --color-blue-dim: #33456e;
+
+  /* Línea degradada reutilizable: negro > azul > violeta > dorado */
+  --gradient-cosmic: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-blue-dim) 15%,
+    var(--color-purple) 50%,
+    var(--color-accent) 85%,
+    transparent
+  );
 }
 
 html {
@@ -168,11 +186,49 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
   font-weight: 400;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
 }
 
 .font-serif {
   font-family: var(--font-serif);
+}
+
+/* Texto con degradado dorado→violeta, para resaltar la palabra clave
+   de un título sin romper la jerarquía tipográfica del resto. */
+.text-gradient-cosmic {
+  background: linear-gradient(
+    100deg,
+    var(--color-accent-soft),
+    var(--color-accent) 45%,
+    var(--color-purple-soft) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Resplandor sutil detrás de los títulos protagonistas. */
+.heading-glow {
+  text-shadow: 0 0 60px color-mix(in srgb, var(--color-accent) 30%, transparent);
+}
+
+/* Etiquetas pequeñas (eyebrows, labels de stats): más finas y compactas
+   que el text-xs uppercase por defecto, al estilo de la referencia. */
+.text-eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+/* Texto de cuerpo (párrafos descriptivos): más chico y liviano que el
+   sans-serif por defecto, para que no compita con los títulos serif. */
+.text-body-cosmic {
+  font-weight: 300;
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
 }
 
 /* Animación sutil de aparición */
@@ -199,4 +255,38 @@ h1, h2, h3, h4, h5, h6 {
 
 .star {
   animation: twinkle 3s ease-in-out infinite;
+}
+
+/* Anillos del remolino cósmico (CosmicSwirl): rotan lentamente alrededor
+   de su propio centro (0,0 en el viewBox). */
+@keyframes spin-ring {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.cosmic-ring {
+  transform-origin: 0px 0px;
+  animation-name: spin-ring;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cosmic-ring,
+  .star,
+  .fade-in-up {
+    animation: none;
+  }
+}
+
+/* Línea horizontal degradada negro→azul→violeta→dorado, usada como
+   separador de sección y en el footer. */
+.rule-cosmic {
+  height: 1px;
+  background: var(--gradient-cosmic);
+}
+
+/* Resplandor sutil para elementos activos/hover (sidebar, enlaces). */
+.glow-accent {
+  box-shadow: 0 0 8px 1px color-mix(in srgb, var(--color-accent) 55%, transparent);
 }
