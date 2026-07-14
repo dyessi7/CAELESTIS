@@ -6,6 +6,8 @@ import ImageUploader from "@/components/ImageUploader";
 import DetectionCanvas from "@/components/DetectionCanvas";
 import DetectionPanel from "@/components/DetectionPanel";
 import ReportButton from "@/components/ReportButton";
+import Footer from "@/components/Footer";
+import Starfield from "@/components/Starfield";
 import { type RespuestaDeteccion } from "@/lib/api";
 
 export default function DetectorPage() {
@@ -26,8 +28,10 @@ export default function DetectorPage() {
   };
 
   return (
-    <main className="min-h-screen px-6 py-12">
-      <header className="max-w-7xl mx-auto flex items-center justify-between mb-16">
+    <main className="min-h-screen px-6 py-12 relative overflow-hidden">
+      <Starfield count={35} seed={99} />
+
+      <header className="max-w-7xl mx-auto flex items-center justify-between mb-16 relative">
         <Link
           href="/"
           className="text-xs uppercase tracking-[0.3em] text-[var(--color-fg-muted)] hover:text-[var(--color-accent)] transition-colors duration-300"
@@ -103,6 +107,8 @@ export default function DetectorPage() {
           </div>
         )}
       </div>
+
+      <Footer />
     </main>
   );
 }
