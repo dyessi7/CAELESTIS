@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { Eye, EyeOff } from "lucide-react";
 import ImageUploader from "@/components/ImageUploader";
 import DetectionCanvas from "@/components/DetectionCanvas";
 import DetectionPanel from "@/components/DetectionPanel";
@@ -14,6 +15,7 @@ export default function DetectorPage() {
   const [resultado, setResultado] = useState<RespuestaDeteccion | null>(null);
   const [imagenUrl, setImagenUrl] = useState<string | null>(null);
   const [seleccionada, setSeleccionada] = useState<number | null>(null);
+  const [mostrarTodas, setMostrarTodas] = useState(true);
 
   const manejarResultado = (data: RespuestaDeteccion, url: string) => {
     setResultado(data);
@@ -26,6 +28,14 @@ export default function DetectorPage() {
     setImagenUrl(null);
     setSeleccionada(null);
   };
+
+  const conteoVisible = resultado
+    ? mostrarTodas
+      ? resultado.total
+      : resultado.detecciones.filter(
+          (d) => d.nivel_certeza === "alta" || d.nivel_certeza === "media"
+        ).length
+    : 0;
 
   return (
     <main className="min-h-screen px-6 py-12 relative overflow-hidden">
@@ -70,6 +80,7 @@ export default function DetectorPage() {
                   imagenAlto={resultado.imagen_alto}
                   deteccionSeleccionada={seleccionada}
                   onSeleccionar={setSeleccionada}
+                  mostrarTodas={mostrarTodas}
                 />
               </div>
 
@@ -87,9 +98,34 @@ export default function DetectorPage() {
 
             {/* Resumen y acciones */}
             <div className="border border-[var(--color-border)] p-6">
-              <p className="text-xs uppercase tracking-[0.3em] text-[var(--color-accent)] mb-4">
-                Detecciones encontradas: {resultado.total}
-              </p>
+              <div className="flex items-center justify-between gap-4 mb-4">
+                <p className="text-xs uppercase tracking-[0.3em] text-[var(--color-accent)]">
+                  Detecciones encontradas: {conteoVisible}
+                  {!mostrarTodas && resultado.total !== conteoVisible && (
+                    <span className="text-[var(--color-fg-subtle)] normal-case tracking-normal">
+                      {" "}
+                      (de {resultado.total} totales)
+                    </span>
+                  )}
+                </p>
+
+                <button
+                  onClick={() => setMostrarTodas((v) => !v)}
+                  title={
+                    mostrarTodas
+                      ? "Mostrar solo detecciones confiables (media/alta)"
+                      : "Mostrar todas las detecciones, incluidas las de baja confianza"
+                  }
+                  className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-[var(--color-fg-muted)] hover:text-[var(--color-accent)] transition-colors duration-300 shrink-0"
+                >
+                  {mostrarTodas ? (
+                    <Eye size={14} strokeWidth={1.5} />
+                  ) : (
+                    <EyeOff size={14} strokeWidth={1.5} />
+                  )}
+                  {mostrarTodas ? "Mostrando todas" : "Solo confiables"}
+                </button>
+              </div>
               <p className="text-sm text-[var(--color-fg-muted)] italic mb-4">
                 Haz click en cualquier objeto resaltado en la imagen para ver
                 sus detalles, o genera un reporte completo.

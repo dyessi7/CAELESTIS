@@ -9,6 +9,7 @@ type Props = {
   imagenAlto: number;
   deteccionSeleccionada: number | null;
   onSeleccionar: (indice: number | null) => void;
+  mostrarTodas: boolean;
 };
 
 export default function DetectionCanvas({
@@ -18,14 +19,18 @@ export default function DetectionCanvas({
   imagenAlto,
   deteccionSeleccionada,
   onSeleccionar,
+  mostrarTodas,
 }: Props) {
-  // Se muestran todas las detecciones, incluidas las de baja confianza:
-  // el color (rojo) ya comunica la incertidumbre, y descartarlas del todo
-  // ocultaría justamente los casos límite donde podría haber un hallazgo real.
-  const deteccionesVisibles = detecciones.map((d, indiceOriginal) => ({
-    ...d,
-    indiceOriginal,
-  }));
+  // Con mostrarTodas=true se incluyen también las de baja confianza (rojo):
+  // el color ya comunica la incertidumbre, y descartarlas del todo ocultaría
+  // justamente los casos límite donde podría haber un hallazgo real.
+  // Con mostrarTodas=false solo quedan las de media/alta certeza.
+  const deteccionesVisibles = detecciones
+    .map((d, indiceOriginal) => ({ ...d, indiceOriginal }))
+    .filter(
+      (d) =>
+        mostrarTodas || d.nivel_certeza === "alta" || d.nivel_certeza === "media"
+    );
 
   const colorPorCerteza = (nivel: string) => {
     switch (nivel) {
