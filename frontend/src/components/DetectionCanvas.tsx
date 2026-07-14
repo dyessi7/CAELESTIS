@@ -19,9 +19,13 @@ export default function DetectionCanvas({
   deteccionSeleccionada,
   onSeleccionar,
 }: Props) {
-  const deteccionesVisibles = detecciones
-    .map((d, indiceOriginal) => ({ ...d, indiceOriginal }))
-    .filter((d) => d.nivel_certeza === "alta" || d.nivel_certeza === "media");
+  // Se muestran todas las detecciones, incluidas las de baja confianza:
+  // el color (rojo) ya comunica la incertidumbre, y descartarlas del todo
+  // ocultaría justamente los casos límite donde podría haber un hallazgo real.
+  const deteccionesVisibles = detecciones.map((d, indiceOriginal) => ({
+    ...d,
+    indiceOriginal,
+  }));
 
   const colorPorCerteza = (nivel: string) => {
     switch (nivel) {
