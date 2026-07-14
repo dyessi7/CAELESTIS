@@ -237,11 +237,12 @@ export default function Home() {
               {/* El texto se desplaza más a la derecha que el título,
                   como en la referencia: composición escalonada. */}
               <div className="md:ml-16 lg:ml-24 max-w-md">
-                <p className="font-serif italic text-lg md:text-xl text-[var(--color-fg-muted)] leading-relaxed mb-8">
-                  Es la Paradoja de Fermi. Y una de las respuestas más
-                  aceptadas no es romántica: no es que el cosmos esté vacío,
-                  es que no lo hemos mirado lo suficiente. El problema no son
-                  los datos. Son las herramientas para mirarlos.
+                <p className="font-serif italic text-lg md:text-xl text-[var(--color-fg)] leading-relaxed mb-8">
+                  Es la paradoja de Fermi. Una de los misterios más
+                  comentados y normalizados en contexto astrológico. No es
+                  que el cosmos esté vacío, es que no se ha mirado lo
+                  suficiente. El problema no son los datos entonces, son las
+                  herramientas para observar.
                 </p>
 
                 <p className="text-xs text-[var(--color-fg-subtle)] leading-relaxed max-w-sm">
@@ -351,8 +352,8 @@ export default function Home() {
             </p>
           </div>
           <h2 className="text-6xl md:text-7xl font-serif mb-12">
-            Sobre los hombros <br /> de quienes{" "}
-            <span className="italic text-gradient-cosmic">miraron antes.</span>
+            La literatura <br /> nos cuenta{" "}
+            <span className="italic text-gradient-cosmic">lo que miraron antes.</span>
           </h2>
           <div className="space-y-8 max-w-2xl">
             {[
@@ -409,7 +410,7 @@ export default function Home() {
           <h2 className="text-6xl md:text-7xl font-serif mb-8">
             Una imagen. <br />
             <span className="italic text-gradient-cosmic">
-              Mil historias del cosmos.
+              Mil objetos encontrados.
             </span>
           </h2>
           <p className="text-body-cosmic text-[var(--color-fg-muted)] mb-16">
