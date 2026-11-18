@@ -290,3 +290,10 @@ h1, h2, h3, h4, h5, h6 {
 .glow-accent {
   box-shadow: 0 0 8px 1px color-mix(in srgb, var(--color-accent) 55%, transparent);
 }
+
+/* Red de seguridad: ningún elemento decorativo (halos, anillos,
+   constelaciones) puede ensanchar la página en pantallas chicas. */
+html,
+body {
+  overflow-x: clip;
+}

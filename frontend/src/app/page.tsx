@@ -29,7 +29,7 @@ export default function Home() {
 
         {/* Remolino de anillos girando lentamente detrás del título,
             eco del cielo en espiral de la referencia. */}
-        <CosmicSwirl className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[760px] h-[760px] opacity-70" />
+        <CosmicSwirl className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[760px] h-[760px] max-w-[150vw] max-h-[150vw] opacity-70" />
 
         <Constellation
           variant="medium"
@@ -43,7 +43,7 @@ export default function Home() {
           <p className="text-eyebrow text-[var(--color-accent)] mb-8">
             Sistema inteligente · Visión por computadora
           </p>
-          <h1 className="text-7xl md:text-9xl font-serif italic mb-12 heading-glow text-gradient-cosmic">
+          <h1 className="text-6xl sm:text-7xl md:text-9xl font-serif italic mb-12 heading-glow text-gradient-cosmic">
             Caelestis
           </h1>
           <p className="font-serif italic text-lg md:text-xl text-[var(--color-fg-muted)] leading-relaxed max-w-2xl mx-auto">
@@ -79,7 +79,7 @@ export default function Home() {
                 ¿Qué es? &nbsp;·&nbsp; 01 — 03
               </p>
             </div>
-            <h2 className="text-6xl md:text-7xl font-serif mb-10">
+            <h2 className="text-5xl sm:text-6xl md:text-7xl font-serif mb-10">
               Una mirada inteligente <br />
               <span className="italic text-gradient-cosmic">al cosmos.</span>
             </h2>
@@ -98,7 +98,7 @@ export default function Home() {
 
             <div className="rule-cosmic mb-10" />
 
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
               {[
                 {
                   n: "01",
@@ -278,7 +278,7 @@ export default function Home() {
       {/* === SECCIÓN 4: RESULTADOS === */}
       <section
         id="resultados"
-        className="min-h-screen flex items-center px-6 py-24 relative"
+        className="min-h-screen flex items-center px-6 py-24 relative overflow-hidden"
       >
         <Starfield count={20} seed={44} />
         <Constellation
@@ -292,7 +292,7 @@ export default function Home() {
               Resultados
             </p>
           </div>
-          <h2 className="text-6xl md:text-7xl font-serif mb-6">
+          <h2 className="text-5xl sm:text-6xl md:text-7xl font-serif mb-6">
             Métricas del <span className="italic text-gradient-cosmic">modelo.</span>
           </h2>
           <p className="text-xs text-[var(--color-fg-subtle)] mb-16">
@@ -337,21 +337,21 @@ export default function Home() {
       {/* === SECCIÓN 5: ANTECEDENTES === */}
       <section
         id="antecedentes"
-        className="min-h-screen flex items-center px-6 py-24 relative bg-[var(--color-bg-soft)]"
+        className="min-h-screen flex items-center px-6 py-24 relative overflow-hidden bg-[var(--color-bg-soft)]"
       >
         <Starfield count={30} seed={55} />
         <Constellation
           className="absolute top-32 left-20 text-[var(--color-blue)] opacity-25"
         />
 
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto w-full">
           <div className="flex items-center gap-3 mb-6">
             <span className="h-px w-8 bg-[var(--color-accent)] opacity-60" />
             <p className="text-eyebrow text-[var(--color-accent)]">
               Antecedentes
             </p>
           </div>
-          <h2 className="text-6xl md:text-7xl font-serif mb-12">
+          <h2 className="text-5xl sm:text-6xl md:text-7xl font-serif mb-12">
             La literatura <br /> nos cuenta{" "}
             <span className="italic text-gradient-cosmic">lo que miraron antes.</span>
           </h2>
@@ -391,10 +391,10 @@ export default function Home() {
       {/* === SECCIÓN 6: PROBAR === */}
       <section
         id="probar"
-        className="min-h-screen flex items-center justify-center px-6 py-24 relative"
+        className="min-h-screen flex items-center justify-center px-6 py-24 relative overflow-hidden"
       >
         <Starfield count={50} seed={66} />
-        <CosmicSwirl className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] h-[640px] opacity-40" />
+        <CosmicSwirl className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] h-[640px] max-w-[150vw] max-h-[150vw] opacity-40" />
         <Constellation
           variant="medium"
           className="absolute top-32 left-1/4 text-[var(--color-purple-soft)] opacity-30"
@@ -407,7 +407,7 @@ export default function Home() {
           <p className="text-eyebrow text-[var(--color-accent)] mb-8">
             Probar el sistema
           </p>
-          <h2 className="text-6xl md:text-7xl font-serif mb-8">
+          <h2 className="text-5xl sm:text-6xl md:text-7xl font-serif mb-8">
             Una imagen. <br />
             <span className="italic text-gradient-cosmic">
               Mil objetos encontrados.
