@@ -137,7 +137,7 @@ python -m venv venv
 .\venv\Scripts\Activate.ps1        # Windows
 source venv/bin/activate           # Linux/Mac
 pip install -r requirements.txt
-uvicorn main:app --reload
+uvicorn main:app --reload --host 0.0.0.0   # 0.0.0.0 permite entrar desde otros dispositivos de la red
 ```
 
 El backend queda accesible en `http://localhost:8000`. La documentación interactiva se sirve en `http://localhost:8000/docs`.

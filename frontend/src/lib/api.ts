@@ -1,5 +1,12 @@
-// URL base del backend. Cambia automáticamente entre desarrollo y producción.
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+// URL base del backend. En producción se define NEXT_PUBLIC_API_URL.
+// En desarrollo se usa el mismo host con el que se abrió la página
+// (localhost, la IP de la PC, o la IP vista desde el celular), así el
+// backend se alcanza desde cualquier dispositivo de la red.
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL ||
+  (typeof window !== "undefined"
+    ? `http://${window.location.hostname}:8000`
+    : "http://localhost:8000");
 
 // === Tipos de TypeScript ===
 // Estos describen la estructura exacta de los datos que vienen del backend.
