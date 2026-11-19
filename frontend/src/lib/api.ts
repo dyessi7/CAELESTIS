@@ -47,18 +47,6 @@ export type RespuestaReporte = {
   reporte: string;
 };
 
-export type Metricas = {
-  modelo: string;
-  epochs: number;
-  global: {
-    mAP50: number;
-    mAP50_95: number;
-    precision: number;
-    recall: number;
-  };
-  por_clase: Record<string, { mAP50: number }>;
-};
-
 // === Funciones que llaman al backend ===
 
 /**
@@ -121,15 +109,3 @@ export async function generarReporte(
   return respuesta.json();
 }
 
-/**
- * Obtiene las métricas del modelo (mAP, precision, recall, etc.).
- */
-export async function obtenerMetricas(): Promise<Metricas> {
-  const respuesta = await fetch(`${API_URL}/metricas`);
-
-  if (!respuesta.ok) {
-    throw new Error(`Error al obtener métricas: ${respuesta.statusText}`);
-  }
-
-  return respuesta.json();
-}
