@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Cormorant_Garamond } from "next/font/google";
+import { Roboto, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
+const roboto = Roboto({
   variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
 });
 
 const cormorant = Cormorant_Garamond({
@@ -26,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${geistSans.variable} ${cormorant.variable}`}>
+    <html lang="es" className={`${roboto.variable} ${cormorant.variable}`}>
       <body className="font-sans antialiased">{children}</body>
     </html>
   );
